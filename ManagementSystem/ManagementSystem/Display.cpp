@@ -41,44 +41,6 @@ void viewListCourse(const Student& st, SchoolYear schoolYear) {
     }
 } // Method view list course of student
 
-bool isValid(const SchoolYear& schoolYear, const Course& newCourse) { // Method check valid course to add
-    if (newCourse.ID == "") {
-        cout << "Error: Course ID cannot be empty" << endl;
-        return false;
-    }
-    if (newCourse.maxStudent <= 0) {
-        cout << "Error: Max number of students must be greater than 0" << endl;
-        return false;
-    }
-    if (newCourse.NumOfCredits <= 0) {
-        cout << "Error: Number of credits must be greater than 0" << endl;
-        return false;
-    }
-    if (newCourse.Name == "") {
-        cout << "Error: Course name cannot be empty" << endl;
-        return false;
-    }
-    if (newCourse.ClassName == "") {
-        cout << "Error: Class name cannot be empty" << endl;
-        return false;
-    }
-    if (newCourse.Lecturer == "") {
-        cout << "Error: Lecturer name cannot be empty" << endl;
-        return false;
-    }
-
-    for (int i = 0; i < 3; ++i) {
-        const Semester& semester = schoolYear.SemestersList[i];
-        for (int j = 0; j < semester.numOfCourses; ++j) {
-            if (semester.CoursesList[j].ID == newCourse.ID) {
-                cout << "Error: Course ID already exists" << endl;
-                return false;
-            }
-        }
-    }
-
-    return true;
-} 
 
 void viewScoreboard(SchoolYear currentSchoolYear) {
     string courseId;
